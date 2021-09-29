@@ -10,6 +10,7 @@ ThemeData customLightThem(BuildContext context) => ThemeData(
       error: Colors.orange.shade900,
       background: customWhiteColor,
     ),
+    scaffoldBackgroundColor: customWhiteColor,
     textTheme: TextTheme(
       bodyText1: GoogleFonts.roboto(
         textStyle: Theme.of(context).textTheme.bodyText1,
