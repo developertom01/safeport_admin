@@ -1,8 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
+import 'package:safeport_admin/utils/local_data/local_storage.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    gotoNextPage();
+    super.initState();
+  }
+
+  void gotoNextPage() async {
+    bool isAuthenticated = await getIsAuthenticated() ?? false;
+    if (!isAuthenticated) {
+      Future.delayed(Duration(seconds: 5), () {
+        Get.offNamedUntil("/LoginScreen", (route) => false);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
