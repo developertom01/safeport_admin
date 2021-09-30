@@ -23,15 +23,19 @@ class HomeScreen extends StatelessWidget {
           width: 180,
         ),
         actions: [
-          CircleAvatar(
+          InkWell(
             radius: 20,
-            backgroundColor: Colors.grey.shade400,
-            child: Text(
-              "A",
-              style: Theme.of(context)
-                  .textTheme
-                  .headline6
-                  ?.copyWith(color: Theme.of(context).primaryColor),
+            onTap: () {},
+            child: CircleAvatar(
+              radius: 20,
+              backgroundColor: Colors.grey.shade400,
+              child: Text(
+                "A",
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6
+                    ?.copyWith(color: Theme.of(context).primaryColor),
+              ),
             ),
           ),
           SizedBox(
