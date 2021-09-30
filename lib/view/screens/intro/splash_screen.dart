@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
     bool isAuthenticated = await getIsAuthenticated() ?? false;
     if (!isAuthenticated) {
       Future.delayed(Duration(seconds: 5), () {
-        Get.offNamedUntil("/LoginScreen", (route) => false);
+        Get.offNamedUntil("/HomeScreen", (route) => false);
       });
     }
   }

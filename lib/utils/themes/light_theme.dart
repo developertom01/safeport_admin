@@ -11,6 +11,11 @@ ThemeData customLightThem(BuildContext context) => ThemeData(
         error: Colors.orange.shade900,
         background: customWhiteColor,
       ),
+      appBarTheme: AppBarTheme(
+        color: customWhiteColor,
+        elevation: 0.0,
+        
+      ),
       scaffoldBackgroundColor: customWhiteColor,
       textTheme: TextTheme(
         bodyText1: GoogleFonts.roboto(
