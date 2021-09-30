@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:safeport_admin/view/screens/home_page/widgets/dahsboard_widget.dart';
+import 'package:safeport_admin/view/screens/profile/widgets/profile_body_widget.dart';
 
-class HomeScreen extends StatelessWidget {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
       appBar: AppBar(
-        leadingWidth: 90,
-        leading: TextButton(
-          child: Image.asset(
-            "assets/images/menu@5x.png",
-            width: 35,
-          ),
-          onPressed: () {
-            _scaffoldKey.currentState?.openEndDrawer();
-          },
-        ),
+        leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: Icon(
+              Icons.arrow_back_ios,
+            )),
         title: Image.asset(
           "assets/images/logo.png",
           width: 180,
@@ -26,9 +23,6 @@ class HomeScreen extends StatelessWidget {
         actions: [
           InkWell(
             radius: 20,
-            onTap: () {
-              Get.toNamed("/ProfileScreen");
-            },
             child: CircleAvatar(
               radius: 20,
               backgroundColor: Colors.grey.shade400,
@@ -46,10 +40,7 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-      drawer: Drawer(
-        child: Container(),
-      ),
-      body: DahboardWidget(),
+      body: ProfileBodyWidget(),
     );
   }
 }

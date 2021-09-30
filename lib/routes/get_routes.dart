@@ -2,6 +2,7 @@ import 'package:get/route_manager.dart';
 import 'package:safeport_admin/view/screens/authentication_screens/login_screen.dart';
 import 'package:safeport_admin/view/screens/home_page/home_screen.dart';
 import 'package:safeport_admin/view/screens/intro/splash_screen.dart';
+import 'package:safeport_admin/view/screens/profile/profile_screen.dart';
 
 final List<GetPage> getRoutes = [
   GetPage(
@@ -15,5 +16,9 @@ final List<GetPage> getRoutes = [
   GetPage(
     name: "/LoginScreen",
     page: () => const LoginScreen(),
+  ),
+  GetPage(
+    name: "/ProfileScreen",
+    page: () => const ProfileScreen(),
   ),
 ];
