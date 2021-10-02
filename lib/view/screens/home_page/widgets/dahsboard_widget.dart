@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:safeport_admin/utils/ui_itils/custom_notifications.dart';
 
 class DahboardWidget extends StatelessWidget {
   const DahboardWidget({Key? key}) : super(key: key);
@@ -33,7 +34,9 @@ class DahboardWidget extends StatelessWidget {
                   child: Container(
                     height: 59,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        showSuccessToast("Hellooooooo");
+                      },
                       child: Text(
                         "Check",
                         style: textTheme.button?.copyWith(
