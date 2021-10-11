@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:safeport_admin/controllers/dashboard_information_controller.dart';
 import 'package:safeport_admin/utils/ui_itils/custom_notifications.dart';
 
 class DahboardWidget extends StatelessWidget {
-  const DahboardWidget({Key? key}) : super(key: key);
+  final DashboardInformationController _informationController =
+      Get.put(DashboardInformationController());
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +72,7 @@ class DahboardWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          "2.3k",
+                          "0",
                           style: textTheme.headline3?.copyWith(
                             color: Theme.of(context).colorScheme.secondary,
                           ),
@@ -110,7 +113,7 @@ class DahboardWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          "2.3k",
+                          "0",
                           style: textTheme.headline3?.copyWith(
                             color: Theme.of(context).colorScheme.secondary,
                           ),
@@ -161,7 +164,7 @@ class DahboardWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          "32.3k",
+                          "0",
                           style: textTheme.headline3?.copyWith(
                             color: Theme.of(context).colorScheme.secondary,
                           ),
@@ -190,10 +193,13 @@ class DahboardWidget extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "24.3k",
-                          style: textTheme.headline3?.copyWith(
-                            color: Theme.of(context).colorScheme.secondary,
+                        child: Obx(
+                          () => Text(
+                            _informationController.checkinCetificateCount.value
+                                .toString(),
+                            style: textTheme.headline3?.copyWith(
+                              color: Theme.of(context).colorScheme.secondary,
+                            ),
                           ),
                         ),
                       )

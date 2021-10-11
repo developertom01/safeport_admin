@@ -8,6 +8,10 @@ Future<bool?> getIsAuthenticated() async {
 
   return preferences.getBool("isAuthenticated");
 }
+Future deleteIsAuthenticated() async {
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  preferences.remove("isAuthenticated");
+}
 
 Future<void> setIsAuthenticated(bool isAuth) async {
   SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -30,12 +34,32 @@ Future setAuthToken(String token) async {
   preferences.setString("AuthToken", token);
 }
 
+Future<String?> getAuthToken() async {
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  return preferences.getString("AuthToken");
+}
+
+Future deleteAuthToken() async {
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  preferences.remove("AuthToken");
+}
+
 Future setUserCode(String userCode) async {
   SharedPreferences preferences = await SharedPreferences.getInstance();
-  preferences.setString("AuthToken", userCode);
+  preferences.setString("userCode", userCode);
+}
+
+Future deleteUserCode() async {
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  preferences.remove("userCode");
 }
 
 Future setUserEmail(String email) async {
   SharedPreferences preferences = await SharedPreferences.getInstance();
-  preferences.setString("AuthToken", email);
+  preferences.setString("userEmail", email);
+}
+
+Future deleteUserEmail() async {
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  preferences.remove("userEmail");
 }
