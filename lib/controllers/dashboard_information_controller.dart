@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:get/get.dart';
 import 'package:safeport_admin/services/dashboard_information_requests.dart';
@@ -41,6 +42,8 @@ class DashboardInformationController extends GetxController {
         loading.value = false;
         showErrorToast("Timeout");
       });
+    } on SocketException {
+      showErrorToast("Network error");
     } catch (e) {
       loading.value = false;
       showErrorToast("External error occured");

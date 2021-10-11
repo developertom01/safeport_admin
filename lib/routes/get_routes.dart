@@ -24,6 +24,6 @@ final List<GetPage> getRoutes = [
   ),
   GetPage(
     name: "/CheckCertificateResultsPage",
-    page: () => const CheckCertificateResultsPage(),
+    page: () =>  CheckCertificateResultsPage(),
   ),
 ];

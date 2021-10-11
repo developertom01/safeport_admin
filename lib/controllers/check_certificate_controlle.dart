@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 // import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
+import 'package:safeport_admin/models/certificate_check_results.dart';
 import 'package:safeport_admin/services/checkin_certificate_request.dart';
 import 'package:safeport_admin/utils/ui_itils/custom_loaders.dart';
 import 'package:safeport_admin/utils/ui_itils/custom_notifications.dart';
@@ -15,8 +16,9 @@ class CheckCertificateController extends GetxController {
   Rx<CountryCode> country = CountryCode(code: "GH", name: "Ghana").obs;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-
   TextEditingController codeEditingController = TextEditingController();
+
+  Rx<CertificateCheckResult>? certificateCheckResult;
 
   onChangeCountry(CountryCode code) {
     country.value = code;
@@ -47,16 +49,25 @@ class CheckCertificateController extends GetxController {
       };
       try {
         checkCertificateRequest(data).then((response) {
+          BotToast.closeAllLoading();
           if (response.statusCode == 200) {
-            print(response.body);
+            print(json.decode(response.body)["data"]);
+            certificateCheckResult =
+                certificateCheckResultFromJson(response.body).obs;
+            codeEditingController.clear();
+            // Get.back();
+            country.value = CountryCode(code: "GH", name: "Ghana");
+            showSuccessToast("Succefully checked  certificate");
+            Get.offNamed("/CheckCertificateResultsPage");
+            print(certificateCheckResult?.value);
           } else {
-            BotToast.closeAllLoading();
             final decoded = json.decode(response.body);
             print(response.body);
             showErrorNotification(decoded["message"]);
-            Get.toNamed("/CheckCertificateResultsPage");
+            // Get.toNamed("/CheckCertificateResultsPage");
           }
         }).catchError((error) {
+          print(error);
           BotToast.closeAllLoading();
           showErrorToast("Unexpected error occured");
         }).timeout(Duration(seconds: 30), onTimeout: () {
@@ -64,6 +75,7 @@ class CheckCertificateController extends GetxController {
           showErrorToast("Timeout! Network error");
         });
       } catch (e) {
+        print(e);
         BotToast.closeAllLoading();
         showErrorToast("Unexpected error occured");
       }
