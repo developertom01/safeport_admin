@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:safeport_admin/utils/ui_itils/color_utils.dart';
 
 class ProfileBodyWidget extends StatelessWidget {
   const ProfileBodyWidget({Key? key}) : super(key: key);
@@ -11,59 +12,112 @@ class ProfileBodyWidget extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          SizedBox(
+            height: 20,
+          ),
           Text(
             "User Profile",
             style: textTheme.headline4,
           ),
           SizedBox(
-            height: 20,
+            height: 40,
           ),
           Center(
             child: CircleAvatar(
-              radius: 100,
+              radius: 70,
               backgroundColor: Colors.grey.shade600,
               child: Text(
-                "A",
+                "T",
                 style: textTheme.headline1?.copyWith(
                   color: Theme.of(context).primaryColor,
                 ),
               ),
             ),
           ),
+          SizedBox(
+            height: 40,
+          ),
           Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Name"),
-                  Text("Name"),
+                  Text(
+                    "Name",
+                    style: textTheme.bodyText1?.copyWith(
+                      color: customBlueColor,
+                      fontSize: 18,
+                    ),
+                  ),
+                  Text(
+                    "Thomas Sarpong",
+                    style: textTheme.bodyText1,
+                  ),
                 ],
+              ),
+              SizedBox(
+                height: 20,
               ),
               Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Name"),
-                  Text("Name"),
+                  Text(
+                    " Email",
+                    style: textTheme.bodyText1?.copyWith(
+                      color: customBlueColor,
+                      fontSize: 18,
+                    ),
+                  ),
+                  Text(
+                    "sarpongthomasd@gmail.com",
+                    style: textTheme.bodyText1,
+                  ),
                 ],
+              ),
+              SizedBox(
+                height: 20,
               ),
               Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Name"),
-                  Text("Name"),
+                  Text(
+                    "Phone",
+                    style: textTheme.bodyText1?.copyWith(
+                      color: customBlueColor,
+                      fontSize: 18,
+                    ),
+                  ),
+                  Text(
+                    "+23335444323",
+                    style: textTheme.bodyText1,
+                  ),
                 ],
+              ),
+              SizedBox(
+                height: 20,
               ),
               Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Name"),
-                  Text("Name"),
+                  Text(
+                    "Nationality",
+                    style: textTheme.bodyText1?.copyWith(
+                      color: customBlueColor,
+                      fontSize: 18,
+                    ),
+                  ),
+                  Text(
+                    "Nigerian",
+                    style: textTheme.bodyText1,
+                  ),
                 ],
+              ),
+              SizedBox(
+                height: 20,
               ),
               Divider(),
             ],
