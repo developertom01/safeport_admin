@@ -10,7 +10,7 @@ void showCustomLoader(BuildContext context) {
       height: 60,
       width: 60,
       decoration: BoxDecoration(
-        color: customWhiteColor.withOpacity(0.4),
+        color: customWhiteColor.withOpacity(0.7),
       ),
       child: Center(
         child: Theme.of(context).platform == TargetPlatform.iOS

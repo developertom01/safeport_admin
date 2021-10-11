@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:safeport_admin/controllers/check_certificate_controlle.dart';
 import 'package:safeport_admin/view/screens/home_page/widgets/dahsboard_widget.dart';
 
 class HomeScreen extends StatelessWidget {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final CheckCertificateController _checkCertificateController =
+      Get.put(CheckCertificateController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
+      key: _checkCertificateController.scaffoldKey,
       appBar: AppBar(
         leadingWidth: 90,
         leading: TextButton(
@@ -16,7 +18,7 @@ class HomeScreen extends StatelessWidget {
             width: 35,
           ),
           onPressed: () {
-            _scaffoldKey.currentState?.openEndDrawer();
+            //  _checkCertificateController.formKey.currentState.op;
           },
         ),
         title: Image.asset(

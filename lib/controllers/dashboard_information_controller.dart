@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:get/get.dart';
@@ -28,6 +29,8 @@ class DashboardInformationController extends GetxController {
         loading.value = false;
         if (response.statusCode == 200) {
           print(response.body);
+          final decoded = json.decode(response.body);
+          checkinCetificateCount.value = decoded["check_count"] as int;
         } else {
           log(response.body);
         }

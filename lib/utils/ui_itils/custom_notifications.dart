@@ -30,6 +30,18 @@ void showErrorToast(String title) {
       color: Colors.deepOrange.shade400, textColor: customWhiteColor);
 }
 
+void showErrorNotification(String title) {
+  BotToast.showNotification(
+    title: (_) => Text(
+      title,
+      style: TextStyle(
+        color: customWhiteColor,
+      ),
+    ),
+    backgroundColor: Colors.deepOrange.shade500,
+  );
+}
+
 void showSuccessToast(String title) {
   showCustomToast(title,
       color: Colors.green.shade400, textColor: customWhiteColor);
