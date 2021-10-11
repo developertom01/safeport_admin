@@ -54,6 +54,7 @@ class CheckCertificateController extends GetxController {
             final decoded = json.decode(response.body);
             print(response.body);
             showErrorNotification(decoded["message"]);
+            Get.toNamed("/CheckCertificateResultsPage");
           }
         }).catchError((error) {
           BotToast.closeAllLoading();
