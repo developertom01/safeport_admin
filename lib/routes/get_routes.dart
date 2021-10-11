@@ -15,7 +15,7 @@ final List<GetPage> getRoutes = [
   ),
   GetPage(
     name: "/LoginScreen",
-    page: () => const LoginScreen(),
+    page: () => LoginScreen(),
   ),
   GetPage(
     name: "/ProfileScreen",

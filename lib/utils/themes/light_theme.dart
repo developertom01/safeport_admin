@@ -69,6 +69,12 @@ ThemeData customLightThem(BuildContext context) => ThemeData(
             color: Colors.orange.shade900,
           ),
         ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(
+            color: Colors.orange.shade900,
+          ),
+        ),
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
