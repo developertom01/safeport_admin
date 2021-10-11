@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
@@ -26,24 +27,19 @@ class DashboardInformationController extends GetxController {
     loading.value = true;
 
     try {
-      getCertificateCountRequest(token).then((response) {
-        loading.value = false;
-        if (response.statusCode == 200) {
-          print(response.body);
-          final decoded = json.decode(response.body);
-          checkinCetificateCount.value = decoded["check_count"] as int;
-        } else {
-          log(response.body);
-        }
-      }).catchError((error) {
-        loading.value = false;
-        print(error);
-      }).timeout(Duration(seconds: 30), onTimeout: () {
-        loading.value = false;
-        showErrorToast("Timeout");
-      });
+      var response = await getCertificateCountRequest(token);
+      loading.value = false;
+      if (response.statusCode == 200) {
+        print(response.body);
+        final decoded = json.decode(response.body);
+        checkinCetificateCount.value = decoded["check_count"] as int;
+      } else {
+        log(response.body);
+      }
     } on SocketException {
-      showErrorToast("Network error");
+      showErrorToast("Network error. Check internet connection");
+    } on TimeoutException {
+      showErrorToast("Timeout!, Check internet connection");
     } catch (e) {
       loading.value = false;
       showErrorToast("External error occured");

@@ -13,7 +13,7 @@ class CustomHttpClient {
       print(accessToken);
       _headers["Authorization"] = 'token $accessToken';
     }
-    return _client.get(Uri.parse(url), headers: _headers);
+    return _client.get(Uri.parse(url), headers: _headers).timeout(Duration(seconds: 30));
   }
 
   Future<http.Response> customPostRequest(String url,
@@ -22,7 +22,8 @@ class CustomHttpClient {
       _headers["Authorization"] = 'token $accessToken';
     }
     final body = json.encode(data);
-    return _client.post(Uri.parse(url), body: body, headers: _headers);
+    return _client.post(Uri.parse(url), body: body, headers: _headers)
+        .timeout(Duration(seconds: 30));
   }
 
   Future<http.Response> customPutRequest(String url,
@@ -31,7 +32,8 @@ class CustomHttpClient {
       _headers["Authorization"] = 'token $accessToken';
     }
     final body = json.encode(data);
-    return _client.put(Uri.parse(url), body: body, headers: _headers);
+    return _client.put(Uri.parse(url), body: body, headers: _headers)
+        .timeout(Duration(seconds: 30));
   }
 
   Future<http.Response> customPatchRequest(String url,
@@ -40,7 +42,8 @@ class CustomHttpClient {
       _headers["Authorization"] = 'token $accessToken';
     }
     final body = json.encode(data);
-    return _client.patch(Uri.parse(url), body: body, headers: _headers);
+    return _client.patch(Uri.parse(url), body: body, headers: _headers)
+        .timeout(Duration(seconds: 30));
   }
 
   Future<http.Response> customDeleteRequest(String url,
@@ -48,6 +51,7 @@ class CustomHttpClient {
     if (accessToken != null) {
       _headers["Authorization"] = 'token $accessToken';
     }
-    return _client.delete(Uri.parse(url), headers: _headers);
+    return _client.delete(Uri.parse(url), headers: _headers)
+        .timeout(Duration(seconds: 30));
   }
 }

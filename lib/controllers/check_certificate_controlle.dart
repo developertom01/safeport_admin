@@ -1,4 +1,6 @@
+import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:bot_toast/bot_toast.dart';
 import 'package:country_code_picker/country_code.dart';
@@ -48,34 +50,32 @@ class CheckCertificateController extends GetxController {
         "code": codeEditingController.text
       };
       try {
-        checkCertificateRequest(data).then((response) {
-          BotToast.closeAllLoading();
-          if (response.statusCode == 200) {
-            print(json.decode(response.body)["data"]);
-            certificateCheckResult =
-                certificateCheckResultFromJson(response.body).obs;
-            codeEditingController.clear();
-            // Get.back();
-            country.value = CountryCode(code: "GH", name: "Ghana");
-            showSuccessToast("Succefully checked  certificate");
-            Get.offNamed("/CheckCertificateResultsPage");
-            print(certificateCheckResult?.value);
-          } else {
-            final decoded = json.decode(response.body);
-            print(response.body);
-            showErrorNotification(decoded["message"]);
-            // Get.toNamed("/CheckCertificateResultsPage");
-          }
-        }).catchError((error) {
-          print(error);
-          BotToast.closeAllLoading();
-          showErrorToast("Unexpected error occured");
-        }).timeout(Duration(seconds: 30), onTimeout: () {
-          BotToast.closeAllLoading();
-          showErrorToast("Timeout! Network error");
-        });
+        var response = await checkCertificateRequest(data);
+        BotToast.closeAllLoading();
+        if (response.statusCode == 200) {
+          print(json.decode(response.body)["data"]);
+          certificateCheckResult =
+              certificateCheckResultFromJson(response.body).obs;
+          codeEditingController.clear();
+          // Get.back();
+          country.value = CountryCode(code: "GH", name: "Ghana");
+          showSuccessToast("Succefully checked  certificate");
+          Get.offNamed("/CheckCertificateResultsPage");
+          print(certificateCheckResult?.value);
+        } else {
+          final decoded = json.decode(response.body);
+          print(response.body);
+          showErrorNotification(decoded["message"]);
+          // Get.toNamed("/CheckCertificateResultsPage");
+        }
+      } on SocketException {
+        BotToast.closeAllLoading();
+        showErrorToast("Network error. Check internet connection");
+      } on TimeoutException {
+        BotToast.closeAllLoading();
+        showErrorToast("Timeout. Check connection");
       } catch (e) {
-        print(e);
+        BotToast.closeAllLoading();
         BotToast.closeAllLoading();
         showErrorToast("Unexpected error occured");
       }
