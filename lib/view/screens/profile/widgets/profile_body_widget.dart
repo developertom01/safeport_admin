@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:safeport_admin/utils/logout.dart';
 import 'package:safeport_admin/utils/ui_itils/color_utils.dart';
+import 'package:safeport_admin/utils/ui_itils/custom_overlay_widgets.dart';
+import 'package:safeport_admin/view/screens/profile/widgets/edit_profile_widget.dart';
 
 class ProfileBodyWidget extends StatelessWidget {
   const ProfileBodyWidget({Key? key}) : super(key: key);
@@ -121,6 +125,64 @@ class ProfileBodyWidget extends StatelessWidget {
               ),
               Divider(),
             ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          SizedBox(
+            width: size.width,
+            height: 45,
+            child: ElevatedButton(
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(
+                Theme.of(context).colorScheme.error,
+              )),
+              onPressed: () {
+                Get.defaultDialog(
+                    titlePadding: EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 15,
+                    ),
+                    title: "Are you sure you want to logout?",
+                    content: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              logout();
+                            },
+                            child: Text(
+                              "Yes",
+                              style: textTheme.button?.copyWith(
+                                fontSize: 20,
+                                color: Theme.of(context).primaryColor,
+                              ),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Get.back();
+                            },
+                            child: Text(
+                              "No",
+                              style: textTheme.button?.copyWith(
+                                fontSize: 20,
+                                color: Theme.of(context).errorColor,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ));
+              },
+              child: Text(
+                "Logout",
+              ),
+            ),
           )
         ],
       ),
