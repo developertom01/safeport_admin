@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:safeport_admin/controllers/check_certificate_controlle.dart';
 import 'package:safeport_admin/models/certificate_check_results.dart';
@@ -148,9 +147,15 @@ class CheckCertificateResultsPage extends StatelessWidget {
                                   fontSize: 18,
                                 ),
                               ),
-                              Text(
-                                certificateCheckResult.externalTravellerId,
-                                style: textTheme.bodyText1,
+                              Expanded(
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    '${certificateCheckResult.externalTravellerId}',
+                                    maxLines: 3,
+                                    style: textTheme.bodyText1,
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -174,9 +179,15 @@ class CheckCertificateResultsPage extends StatelessWidget {
                                   fontSize: 18,
                                 ),
                               ),
-                              Text(
-                                certificateCheckResult.country,
-                                style: textTheme.bodyText1,
+                              Expanded(
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    '${certificateCheckResult.country}',
+                                    maxLines: 3,
+                                    style: textTheme.bodyText1,
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -265,9 +276,15 @@ class CheckCertificateResultsPage extends StatelessWidget {
                                   fontSize: 18,
                                 ),
                               ),
-                              Text(
-                                certificateCheckResult.laboratoryTestType,
-                                style: textTheme.bodyText1,
+                              Expanded(
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    certificateCheckResult.laboratoryTestType,
+                                    maxLines: 3,
+                                    style: textTheme.bodyText1,
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -291,9 +308,15 @@ class CheckCertificateResultsPage extends StatelessWidget {
                                   fontSize: 18,
                                 ),
                               ),
-                              Text(
-                                certificateCheckResult.result,
-                                style: textTheme.bodyText1,
+                              Expanded(
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    '${certificateCheckResult.result}',
+                                    maxLines: 3,
+                                    style: textTheme.bodyText1,
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -317,9 +340,15 @@ class CheckCertificateResultsPage extends StatelessWidget {
                                   fontSize: 18,
                                 ),
                               ),
-                              Text(
-                                '${certificateCheckResult.certificateId}',
-                                style: textTheme.bodyText1,
+                              Expanded(
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    '${certificateCheckResult.certificateId}',
+                                    maxLines: 3,
+                                    style: textTheme.bodyText1,
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -337,15 +366,21 @@ class CheckCertificateResultsPage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Laboratory test kit",
+                                "Test kit",
                                 style: textTheme.bodyText1?.copyWith(
                                   color: customBlueColor,
                                   fontSize: 18,
                                 ),
                               ),
-                              Text(
-                                '${certificateCheckResult.laboratoryTestKit}',
-                                style: textTheme.bodyText1,
+                              Expanded(
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    '${certificateCheckResult.laboratoryTestKit}',
+                                    maxLines: 3,
+                                    style: textTheme.bodyText1,
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -389,15 +424,21 @@ class CheckCertificateResultsPage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Laboratory sameple date",
+                                "Sample collection date",
                                 style: textTheme.bodyText1?.copyWith(
                                   color: customBlueColor,
                                   fontSize: 18,
                                 ),
                               ),
-                              Text(
-                                '${formatDateTime(certificateCheckResult.laboratorySampleDatetime)}',
-                                style: textTheme.bodyText1,
+                              Expanded(
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    '${formatDateTime(certificateCheckResult.laboratorySampleDatetime)}',
+                                    maxLines: 2,
+                                    style: textTheme.bodyText1,
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -415,7 +456,7 @@ class CheckCertificateResultsPage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Laboratory test date",
+                                "Test date",
                                 style: textTheme.bodyText1?.copyWith(
                                   color: customBlueColor,
                                   fontSize: 18,

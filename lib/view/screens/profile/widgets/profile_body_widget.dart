@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:safeport_admin/utils/logout.dart';
 import 'package:safeport_admin/utils/ui_itils/color_utils.dart';
-import 'package:safeport_admin/utils/ui_itils/custom_overlay_widgets.dart';
-import 'package:safeport_admin/view/screens/profile/widgets/edit_profile_widget.dart';
+
 
 class ProfileBodyWidget extends StatelessWidget {
   const ProfileBodyWidget({Key? key}) : super(key: key);
