@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:safeport_admin/controllers/check_certificate_controlle.dart';
 import 'package:safeport_admin/view/screens/home_page/widgets/dahsboard_widget.dart';
+import 'package:safeport_admin/view/screens/home_page/widgets/drawer_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   final CheckCertificateController _checkCertificateController =
@@ -9,18 +10,16 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _checkCertificateController.scaffoldKey,
+      // key: _checkCertificateController.scaffoldKey,
       appBar: AppBar(
         leadingWidth: 90,
-        leading: TextButton(
-          child: Image.asset(
-            "assets/images/menu@5x.png",
-            width: 35,
-          ),
-          onPressed: () {
-            //  _checkCertificateController.formKey.currentState.op;
-          },
-        ),
+        leading: Builder(
+            builder: (BuildContext context) => TextButton(
+                child: Image.asset(
+                  "assets/images/menu@5x.png",
+                  width: 35,
+                ),
+                onPressed: () => Scaffold.of(context).openDrawer())),
         title: Image.asset(
           "assets/images/logo.png",
           width: 180,
@@ -48,9 +47,7 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-      drawer: Drawer(
-        child: Container(),
-      ),
+      drawer: DrawerWidget(),
       body: DahboardWidget(),
     );
   }

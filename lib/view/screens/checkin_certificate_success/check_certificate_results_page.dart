@@ -5,7 +5,7 @@ import 'package:safeport_admin/models/certificate_check_results.dart';
 import 'package:safeport_admin/utils/datetime_formatter/format_date.dart';
 import 'package:safeport_admin/utils/ui_itils/color_utils.dart';
 
-class CheckCertificateResultsPage extends StatelessWidget {
+class CheckCertificateResultsScreen extends StatelessWidget {
   final CheckCertificateController _checkCertificateController =
       Get.find<CheckCertificateController>();
 
