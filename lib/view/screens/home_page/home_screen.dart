@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:safeport_admin/controllers/check_certificate_controlle.dart';
 import 'package:safeport_admin/view/screens/home_page/widgets/dahsboard_widget.dart';
 import 'package:safeport_admin/view/screens/home_page/widgets/drawer_widget.dart';
 
 class HomeScreen extends StatelessWidget {
- 
+  final CheckCertificateController _checkCertificateController =
+      Get.put(CheckCertificateController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: _checkCertificateController.scaffoldKey,
+      key: _checkCertificateController.scaffoldKey,
       appBar: AppBar(
         leadingWidth: 90,
         leading: Builder(
