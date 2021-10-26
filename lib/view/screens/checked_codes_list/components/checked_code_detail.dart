@@ -246,7 +246,7 @@ class CheckedCodeDetail extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "lbouratory name: ",
+                  "Laboratory name: ",
                   style: theme.textTheme.bodyText1?.copyWith(
                     fontSize: 18,
                     color: theme.primaryColor,
@@ -272,7 +272,7 @@ class CheckedCodeDetail extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Test kit: ",
+                  "Sample: ",
                   style: theme.textTheme.bodyText1?.copyWith(
                     fontSize: 18,
                     color: theme.primaryColor,

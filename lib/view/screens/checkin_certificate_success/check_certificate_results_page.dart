@@ -106,7 +106,7 @@ class CheckCertificateResultsScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Traveller Travel Id type",
+                                "Traveller ID type",
                                 style: textTheme.bodyText1?.copyWith(
                                   color: customBlueColor,
                                   fontSize: 18,
@@ -248,7 +248,7 @@ class CheckCertificateResultsScreen extends StatelessWidget {
                                 child: Align(
                                   alignment: Alignment.centerRight,
                                   child: Text(
-                                    "${certificateCheckResult.laboratoryName}",
+                                    "${certificateCheckResult.laboratoryTestName}",
                                     maxLines: 3,
                                     style: textTheme.bodyText1,
                                   ),
@@ -334,6 +334,38 @@ class CheckCertificateResultsScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
+                                "Laboratory name",
+                                style: textTheme.bodyText1?.copyWith(
+                                  color: customBlueColor,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              Expanded(
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    '${certificateCheckResult.laboratoryName}',
+                                    maxLines: 3,
+                                    style: textTheme.bodyText1,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Divider(
+                            height: 2,
+                            color: Colors.grey,
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
                                 "Certified Id",
                                 style: textTheme.bodyText1?.copyWith(
                                   color: customBlueColor,
@@ -366,7 +398,7 @@ class CheckCertificateResultsScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Test kit",
+                                "Sample",
                                 style: textTheme.bodyText1?.copyWith(
                                   color: customBlueColor,
                                   fontSize: 18,
@@ -424,7 +456,7 @@ class CheckCertificateResultsScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Sample collection date",
+                                "Sample collection \ndate",
                                 style: textTheme.bodyText1?.copyWith(
                                   color: customBlueColor,
                                   fontSize: 18,
