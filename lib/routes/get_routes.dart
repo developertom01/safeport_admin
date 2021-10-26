@@ -21,7 +21,7 @@ final List<GetPage> getRoutes = [
   ),
   GetPage(
     name: "/ProfileScreen",
-    page: () => const ProfileScreen(),
+    page: () => ProfileScreen(),
   ),
   GetPage(
     name: "/CheckCertificateResultsPage",

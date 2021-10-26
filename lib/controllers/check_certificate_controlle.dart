@@ -43,7 +43,7 @@ class CheckCertificateController extends GetxController {
 
   submit() async {
     if (formKey.currentState!.validate()) {
-      showCustomLoader(scaffoldKey.currentState!.context);
+      showCustomLoader();
       // print(info: country.value.name);
       final data = {
         "country": country.value.name,

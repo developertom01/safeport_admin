@@ -10,7 +10,6 @@ class LoginScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      key: _loginController.scaffoldKey,
       body: SingleChildScrollView(
         child: Container(
           width: size.width,

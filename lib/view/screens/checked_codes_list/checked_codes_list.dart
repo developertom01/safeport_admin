@@ -31,7 +31,7 @@ class CheckedCodesList extends StatelessWidget {
       ),
       body: Obx(() {
         if (_checkedCodesHistoryController.isLoading.value)
-          showCustomLoader(context);
+          showCustomLoader();
         else {
           BotToast.closeAllLoading();
         }

@@ -35,6 +35,7 @@ class DashboardInformationController extends GetxController {
         checkinCetificateCount.value = decoded["check_count"] as int;
       } else {
         log(response.body);
+        // showErrorToast(title)
       }
     } on SocketException {
       showErrorToast("Network error. Check internet connection");

@@ -14,7 +14,6 @@ class LoginController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
-  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   void login() async {
     if (loginFormKey.currentState!.validate()) {
@@ -22,7 +21,7 @@ class LoginController extends GetxController {
         "username": emailController.text,
         "password": passwordController.text
       };
-      showCustomLoader(scaffoldKey.currentState!.context);
+      showCustomLoader();
       try {
         var response = await loginRequest(data);
         BotToast.closeAllLoading();

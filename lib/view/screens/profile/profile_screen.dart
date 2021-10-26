@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:safeport_admin/controllers/user_profile_controller.dart';
 import 'package:safeport_admin/view/screens/profile/widgets/profile_body_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    Get.put(UserProfileController());
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(

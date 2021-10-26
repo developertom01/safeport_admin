@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:safeport_admin/utils/ui_itils/color_utils.dart';
 
-void showCustomLoader(BuildContext context) {
+void showCustomLoader() {
   BotToast.showCustomLoading(
     toastBuilder: (_) => Container(
       height: 60,
@@ -13,13 +13,9 @@ void showCustomLoader(BuildContext context) {
         color: customWhiteColor.withOpacity(0.7),
       ),
       child: Center(
-        child: Theme.of(context).platform == TargetPlatform.iOS
-            ? CupertinoActivityIndicator(
-                radius: 20,
-              )
-            : SpinKitCircle(
-                color: customBlueColor,
-              ),
+        child: SpinKitCircle(
+          color: customBlueColor,
+        ),
       ),
     ),
   );
