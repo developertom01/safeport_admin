@@ -7,8 +7,10 @@ import 'package:country_code_picker/country_code.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 // import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
+import 'package:safeport_admin/controllers/dashboard_information_controller.dart';
 import 'package:safeport_admin/models/certificate_check_results.dart';
 import 'package:safeport_admin/services/checkin_certificate_request.dart';
 import 'package:safeport_admin/utils/ui_itils/custom_loaders.dart';
@@ -20,6 +22,8 @@ class CheckCertificateController extends GetxController {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   TextEditingController codeEditingController = TextEditingController();
 
+
+
   Rx<CertificateCheckResult>? certificateCheckResult;
 
   onChangeCountry(CountryCode code) {
@@ -28,15 +32,15 @@ class CheckCertificateController extends GetxController {
 
   scanCode() async {
     try {
-      // String scanned = await FlutterBarcodeScanner.scanBarcode(
-      //     "black", "cancel", true, ScanMode.DEFAULT);
-      // codeEditingController.text = scanned;
-      showErrorToast("Failed to mount scanner");
+      String scanned = await FlutterBarcodeScanner.scanBarcode(
+          "#ff6666", "stop", true, ScanMode.QR);
+      codeEditingController.text = scanned;
     } on PlatformException catch (e) {
       print(e);
       showErrorToast("Camera permission denied");
     } catch (e) {
       print(e);
+      printError(info: e.toString());
       showErrorToast("Failed to mount scanner");
     }
   }
@@ -60,6 +64,8 @@ class CheckCertificateController extends GetxController {
           // Get.back();
           country.value = CountryCode(code: "GH", name: "Ghana");
           showSuccessToast("Succefully checked  certificate");
+          Get.find<DashboardInformationController>().getCheckedInCount();
+          // Get.find<CheckedCodesHistoryController>().fetchCheckedCodesHistory();
           Get.offNamed("/CheckCertificateResultsPage");
           print(certificateCheckResult?.value);
         } else {

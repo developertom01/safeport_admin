@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:safeport_admin/controllers/check_certificate_controlle.dart';
 import 'package:safeport_admin/utils/ui_itils/color_utils.dart';
 import 'package:safeport_admin/view/shared/custom_country_picker.dart';
+// import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 class CheckinModalWidget extends StatelessWidget {
   final CheckCertificateController _checkCertificateController =

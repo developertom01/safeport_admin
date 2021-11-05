@@ -4,13 +4,14 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:get/get.dart';
+import 'package:safeport_admin/models/dashboard_summary.dart';
 import 'package:safeport_admin/services/dashboard_information_requests.dart';
 import 'package:safeport_admin/utils/local_data/local_storage.dart';
 import 'package:safeport_admin/utils/logout.dart';
 import 'package:safeport_admin/utils/ui_itils/custom_notifications.dart';
 
 class DashboardInformationController extends GetxController {
-  final RxInt checkinCetificateCount = 0.obs;
+  Rx<DashboardSummary>? summary;
   RxBool loading = false.obs;
 
   @override
@@ -30,9 +31,7 @@ class DashboardInformationController extends GetxController {
       var response = await getCertificateCountRequest(token);
       loading.value = false;
       if (response.statusCode == 200) {
-        print(response.body);
-        final decoded = json.decode(response.body);
-        checkinCetificateCount.value = decoded["check_count"] as int;
+        summary = dashboardSummaryFromJson(response.body).obs;
       } else {
         log(response.body);
         // showErrorToast(title)
@@ -44,6 +43,7 @@ class DashboardInformationController extends GetxController {
     } catch (e) {
       loading.value = false;
       showErrorToast("External error occured");
+      print(e);
     }
   }
 }

@@ -28,6 +28,7 @@ class UserProfileController extends GetxController {
       isLoading.value = false;
       BotToast.closeAllLoading();
       if (response.statusCode == 200) {
+        print(response.body);
         userProfile = userProfileFromJson(response.body).obs;
       } else {
         final decoded = json.decode(response.body);
@@ -54,6 +55,8 @@ class UserProfileController extends GetxController {
       errorMessage.value = "Timeout! Check internet connection.";
       showErrorToast("An error occured");
     } catch (e) {
+      printError(info: e.toString());
+
       isLoading.value = false;
       BotToast.closeAllLoading();
       isFailed.value = true;

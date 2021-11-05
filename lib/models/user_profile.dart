@@ -41,14 +41,14 @@ class Port {
     required this.phoneNumber,
   });
 
-  String name;
-  String country;
-  String email;
-  String region;
-  String zipcode;
-  String address1;
-  String address2;
-  String phoneNumber;
+  String? name;
+  String? country;
+  String? email;
+  String? region;
+  String? zipcode;
+  String? address1;
+  String? address2;
+  String? phoneNumber;
 
   factory Port.fromJson(Map<String, dynamic> json) => Port(
         name: json["name"],

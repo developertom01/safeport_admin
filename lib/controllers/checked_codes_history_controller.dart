@@ -23,6 +23,7 @@ class CheckedCodesHistoryController extends GetxController {
       final http.Response response = await checkedCodesHistoryRequest();
       isLoading.value = false;
       if (response.statusCode == 200) {
+        print(response.body);
         checkedCodesHistory.value = checkedCodesHistoryFromJson(response.body);
       } else {
         var deoded = json.decode(response.body);
@@ -35,6 +36,7 @@ class CheckedCodesHistoryController extends GetxController {
       isLoading.value = false;
       showErrorToast("Timeout! Check internet connection");
     } catch (e) {
+      printError(info: e.toString());
       showErrorToast("Unnexpected error occured");
     }
   }

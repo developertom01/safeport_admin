@@ -6,7 +6,7 @@ import 'dart:convert';
 
 List<CheckedCodesHistory> checkedCodesHistoryFromJson(String str) =>
     List<CheckedCodesHistory>.from(json
-        .decode(str)["check_count"]
+        .decode(str)["check_history"]
         .map((x) => CheckedCodesHistory.fromJson(x)));
 
 String checkedCodesHistoryToJson(List<CheckedCodesHistory> data) =>
