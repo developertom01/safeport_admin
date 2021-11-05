@@ -6,6 +6,7 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:get/get.dart';
 import 'package:safeport_admin/models/user_profile.dart';
 import 'package:safeport_admin/services/user_profile_request.dart';
+import 'package:safeport_admin/utils/network/error_interceptors.dart';
 import 'package:safeport_admin/utils/ui_itils/custom_loaders.dart';
 import 'package:safeport_admin/utils/ui_itils/custom_notifications.dart';
 
@@ -31,16 +32,7 @@ class UserProfileController extends GetxController {
         print(response.body);
         userProfile = userProfileFromJson(response.body).obs;
       } else {
-        final decoded = json.decode(response.body);
-        isFailed.value = true;
-        print(response.statusCode);
-        if (response.statusCode == 401) {
-          errorMessage.value = decoded["detail"];
-        } else {
-          errorMessage.value = decoded["message"];
-        }
-
-        showErrorToast("An error occured");
+        interceptError(response);
       }
     } on SocketException {
       isLoading.value = false;

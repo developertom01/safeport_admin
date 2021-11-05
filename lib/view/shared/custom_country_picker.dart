@@ -5,11 +5,13 @@ import 'package:safeport_admin/utils/ui_itils/color_utils.dart';
 class CutomCountryPicker extends StatelessWidget {
   final ValueChanged<CountryCode> onChanged;
   final String _countryCode;
+  final List<String>? countriesFilter;
+  
 
   const CutomCountryPicker({
     Key? key,
     required String countryCode,
-    required this.onChanged,
+    required this.onChanged, this.countriesFilter,
   })  : _countryCode = countryCode,
         super(key: key);
 
@@ -20,6 +22,7 @@ class CutomCountryPicker extends StatelessWidget {
 
     return CountryCodePicker(
       initialSelection: _countryCode,
+      countryFilter: countriesFilter,
       onChanged: onChanged,
       showCountryOnly: true,
       builder: (code) => Container(

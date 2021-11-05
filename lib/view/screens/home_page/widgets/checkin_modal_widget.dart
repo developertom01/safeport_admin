@@ -73,6 +73,7 @@ class CheckinModalWidget extends StatelessWidget {
                     ),
                     Obx(
                       () => CutomCountryPicker(
+                        countriesFilter: ["Gh","BF","GW","NG","Gm"],
                           countryCode:
                               _checkCertificateController.country.value.code ??
                                   "",

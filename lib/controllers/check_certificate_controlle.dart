@@ -13,16 +13,15 @@ import 'package:get/get.dart';
 import 'package:safeport_admin/controllers/dashboard_information_controller.dart';
 import 'package:safeport_admin/models/certificate_check_results.dart';
 import 'package:safeport_admin/services/checkin_certificate_request.dart';
+import 'package:safeport_admin/utils/network/error_interceptors.dart';
 import 'package:safeport_admin/utils/ui_itils/custom_loaders.dart';
 import 'package:safeport_admin/utils/ui_itils/custom_notifications.dart';
 
 class CheckCertificateController extends GetxController {
-  Rx<CountryCode> country = CountryCode(code: "GH", name: "Ghana").obs;
+  Rx<CountryCode> country = CountryCode(code: "NG", name: "Nigeria").obs;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   TextEditingController codeEditingController = TextEditingController();
-
-
 
   Rx<CertificateCheckResult>? certificateCheckResult;
 
@@ -34,6 +33,8 @@ class CheckCertificateController extends GetxController {
     try {
       String scanned = await FlutterBarcodeScanner.scanBarcode(
           "#ff6666", "stop", true, ScanMode.QR);
+      if (scanned == "-1") showErrorToast("No code scanned");
+      else 
       codeEditingController.text = scanned;
     } on PlatformException catch (e) {
       print(e);
@@ -62,17 +63,14 @@ class CheckCertificateController extends GetxController {
               certificateCheckResultFromJson(response.body).obs;
           codeEditingController.clear();
           // Get.back();
-          country.value = CountryCode(code: "GH", name: "Ghana");
+          country.value = CountryCode(code: "NG", name: "Nigeria");
           showSuccessToast("Succefully checked  certificate");
           Get.find<DashboardInformationController>().getCheckedInCount();
           // Get.find<CheckedCodesHistoryController>().fetchCheckedCodesHistory();
           Get.offNamed("/CheckCertificateResultsPage");
           print(certificateCheckResult?.value);
         } else {
-          final decoded = json.decode(response.body);
-          print(response.body);
-          showErrorNotification(decoded["message"]);
-          // Get.toNamed("/CheckCertificateResultsPage");
+          interceptError(response);
         }
       } on SocketException {
         BotToast.closeAllLoading();
