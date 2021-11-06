@@ -280,7 +280,7 @@ class CheckCertificateResultsScreen extends StatelessWidget {
                                 child: Align(
                                   alignment: Alignment.centerRight,
                                   child: Text(
-                                    certificateCheckResult.laboratoryTestType,
+                                    '${certificateCheckResult.laboratoryTestType}',
                                     maxLines: 3,
                                     style: textTheme.bodyText1,
                                   ),

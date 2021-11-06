@@ -39,7 +39,7 @@ class DashboardInformationController extends GetxController {
     } on SocketException {
       showErrorToast("Network error. Check internet connection");
     } on TimeoutException {
-      showErrorToast("Timeout!, Check internet connection");
+      showErrorToast("Timeout! Check internet connection");
     } catch (e) {
       loading.value = false;
       showErrorToast("External error occured");

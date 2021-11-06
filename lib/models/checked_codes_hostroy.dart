@@ -14,42 +14,42 @@ String checkedCodesHistoryToJson(List<CheckedCodesHistory> data) =>
 
 class CheckedCodesHistory {
   CheckedCodesHistory({
-    required this.country,
-    required this.certificateId,
-    required this.checkedBy,
-    required this.result,
-    required this.externalTravellerIdtype,
-    required this.externalTravellerId,
-    required this.externalTravellerLastname,
-    required this.externalTravellerFirstname,
-    required this.externalTravellerOthername,
-    required this.laboratoryTestName,
-    required this.laboratoryTestType,
-    required this.laboratoryTestKit,
-    required this.laboratoryName,
-    required this.resultComment,
-    required this.laboratorySampleDatetime,
-    required this.laboratoryTestDatetime,
-    required this.dateUploaded,
+    this.country,
+    this.certificateId,
+    this.checkedBy,
+    this.result,
+    this.externalTravellerIdtype,
+    this.externalTravellerId,
+    this.externalTravellerLastname,
+    this.externalTravellerFirstname,
+    this.externalTravellerOthername,
+    this.laboratoryTestName,
+    this.laboratoryTestType,
+    this.laboratoryTestKit,
+    this.laboratoryName,
+    this.resultComment,
+    this.laboratorySampleDatetime,
+    this.laboratoryTestDatetime,
+    this.dateUploaded,
   });
 
-  final String country;
-  final String certificateId;
-  final String checkedBy;
-  final String result;
-  final String externalTravellerIdtype;
-  final String externalTravellerId;
-  final String externalTravellerLastname;
-  final String externalTravellerFirstname;
-  final String externalTravellerOthername;
-  final String laboratoryTestName;
-  final String laboratoryTestType;
-  final String laboratoryTestKit;
-  final String laboratoryName;
-  final String resultComment;
-  final DateTime laboratorySampleDatetime;
-  final DateTime laboratoryTestDatetime;
-  final DateTime dateUploaded;
+  final String? country;
+  final String? certificateId;
+  final String? checkedBy;
+  final String? result;
+  final String? externalTravellerIdtype;
+  final String? externalTravellerId;
+  final String? externalTravellerLastname;
+  final String? externalTravellerFirstname;
+  final String? externalTravellerOthername;
+  final String? laboratoryTestName;
+  final String? laboratoryTestType;
+  final String? laboratoryTestKit;
+  final String? laboratoryName;
+  final String? resultComment;
+  final DateTime? laboratorySampleDatetime;
+  final DateTime? laboratoryTestDatetime;
+  final DateTime? dateUploaded;
 
   factory CheckedCodesHistory.fromJson(Map<String, dynamic> json) =>
       CheckedCodesHistory(
@@ -67,12 +67,11 @@ class CheckedCodesHistory {
         laboratoryTestKit: json["laboratory_test_kit"],
         laboratoryName: json["laboratory_name"],
         resultComment: json["result_comment"],
-        laboratorySampleDatetime:
+        laboratorySampleDatetime:json["laboratory_sample_datetime"] !=null ?null: 
             DateTime.parse(json["laboratory_sample_datetime"]),
-        laboratoryTestDatetime:
+        laboratoryTestDatetime:json["laboratory_test_datetime"] !=null ?null: 
             DateTime.parse(json["laboratory_test_datetime"]),
-        dateUploaded: DateTime.parse(json["date_uploaded"]),
-      );
+        dateUploaded:json["date_uploaded"] !=null ?null: DateTime.parse(json["date_uploaded"]),      );
 
   Map<String, dynamic> toJson() => {
         "country": country,
@@ -90,8 +89,8 @@ class CheckedCodesHistory {
         "laboratory_name": laboratoryName,
         "result_comment": resultComment,
         "laboratory_sample_datetime":
-            laboratorySampleDatetime.toIso8601String(),
-        "laboratory_test_datetime": laboratoryTestDatetime.toIso8601String(),
-        "date_uploaded": dateUploaded.toIso8601String(),
+            laboratorySampleDatetime?.toIso8601String(),
+        "laboratory_test_datetime": laboratoryTestDatetime?.toIso8601String(),
+        "date_uploaded": dateUploaded?.toIso8601String(),
       };
 }

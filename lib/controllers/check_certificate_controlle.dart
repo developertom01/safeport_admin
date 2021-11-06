@@ -33,9 +33,10 @@ class CheckCertificateController extends GetxController {
     try {
       String scanned = await FlutterBarcodeScanner.scanBarcode(
           "#ff6666", "stop", true, ScanMode.QR);
-      if (scanned == "-1") showErrorToast("No code scanned");
-      else 
-      codeEditingController.text = scanned;
+      if (scanned == "-1")
+        showErrorToast("No code scanned");
+      else
+        codeEditingController.text = scanned;
     } on PlatformException catch (e) {
       print(e);
       showErrorToast("Camera permission denied");
@@ -51,14 +52,14 @@ class CheckCertificateController extends GetxController {
       showCustomLoader();
       // print(info: country.value.name);
       final data = {
-        "country": country.value.name,
+        "country": country.value.code,
         "code": codeEditingController.text
       };
       try {
         var response = await checkCertificateRequest(data);
         BotToast.closeAllLoading();
         if (response.statusCode == 200) {
-          print(json.decode(response.body)["data"]);
+          print(response.body);
           certificateCheckResult =
               certificateCheckResultFromJson(response.body).obs;
           codeEditingController.clear();
@@ -77,10 +78,10 @@ class CheckCertificateController extends GetxController {
         showErrorToast("Network error. Check internet connection");
       } on TimeoutException {
         BotToast.closeAllLoading();
-        showErrorToast("Timeout. Check connection");
+        showErrorToast("WAHO Member State not responding (error 901).");
       } catch (e) {
         BotToast.closeAllLoading();
-        BotToast.closeAllLoading();
+        print(e);
         showErrorToast("Unexpected error occured");
       }
     }

@@ -42,7 +42,7 @@ class LoginController extends GetxController {
         BotToast.closeAllLoading();
         showErrorToast("Network error. Check internet connection");
       } on TimeoutException {
-        showErrorToast("Timeout!, Check internet connection");
+        showErrorToast("Timeout! Check internet connection");
       } catch (e) {
         BotToast.closeAllLoading();
         showErrorToast("External error occured");

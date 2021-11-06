@@ -44,7 +44,7 @@ class UserProfileController extends GetxController {
       isLoading.value = false;
       BotToast.closeAllLoading();
       isFailed.value = true;
-      errorMessage.value = "Timeout! Check internet connection.";
+      errorMessage.value = "Timeout! Check internet connection";
       showErrorToast("An error occured");
     } catch (e) {
       printError(info: e.toString());

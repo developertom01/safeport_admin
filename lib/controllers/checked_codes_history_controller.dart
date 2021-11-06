@@ -34,9 +34,10 @@ class CheckedCodesHistoryController extends GetxController {
       showErrorToast("Network error. Check internet connection");
     } on TimeoutException {
       isLoading.value = false;
-      showErrorToast("Timeout! Check internet connection");
+      showErrorToast("WAHO Member State not responding (error 901).");
     } catch (e) {
       printError(info: e.toString());
+      print(e);
       showErrorToast("Unnexpected error occured");
     }
   }
