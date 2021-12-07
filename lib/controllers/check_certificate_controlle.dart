@@ -59,7 +59,11 @@ class CheckCertificateController extends GetxController {
         var response = await checkCertificateRequest(data);
         BotToast.closeAllLoading();
         if (response.statusCode == 200) {
-          print(response.body);
+          // var sd = DateTime.parse(
+          //     json.decode(response.body)["data"]["laboratory_sample_datetime"]);
+          // print(
+          //     json.decode(response.body)["data"]["laboratory_sample_datetime"]);
+          // print(sd);
           certificateCheckResult =
               certificateCheckResultFromJson(response.body).obs;
           codeEditingController.clear();

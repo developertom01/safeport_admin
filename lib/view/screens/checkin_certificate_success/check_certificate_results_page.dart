@@ -437,7 +437,8 @@ class CheckCertificateResultsScreen extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                '${formatDateTime(certificateCheckResult.dateUploaded)}',
+                                certificateCheckResult.dateUploaded != null?
+                                '${formatDateTime(certificateCheckResult.dateUploaded)}':"Not specified",
                                 style: textTheme.bodyText1,
                               ),
                             ],
@@ -466,7 +467,8 @@ class CheckCertificateResultsScreen extends StatelessWidget {
                                 child: Align(
                                   alignment: Alignment.centerRight,
                                   child: Text(
-                                    '${formatDateTime(certificateCheckResult.laboratorySampleDatetime)}',
+                                    certificateCheckResult.laboratorySampleDatetime !=null?
+                                    '${formatDateTime(certificateCheckResult.laboratorySampleDatetime)}':"Not specified",
                                     maxLines: 2,
                                     style: textTheme.bodyText1,
                                   ),
@@ -495,7 +497,8 @@ class CheckCertificateResultsScreen extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                '${formatDateTime(certificateCheckResult.laboratoryTestDatetime)}',
+                                certificateCheckResult.laboratoryTestDatetime !=null?
+                                '${formatDateTime(certificateCheckResult.laboratoryTestDatetime)}':"Not specified",
                                 style: textTheme.bodyText1,
                               ),
                             ],

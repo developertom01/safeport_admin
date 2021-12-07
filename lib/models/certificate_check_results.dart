@@ -65,11 +65,10 @@ class CertificateCheckResult {
         laboratoryTestKit: json["laboratory_test_kit"],
         laboratoryName: json["laboratory_name"],
         resultComment: json["result_comment"],
-        laboratorySampleDatetime:json["laboratory_sample_datetime"] !=null ?null: 
-            DateTime.parse(json["laboratory_sample_datetime"]),
-        laboratoryTestDatetime:json["laboratory_test_datetime"] !=null ?null: 
-            DateTime.parse(json["laboratory_test_datetime"]),
-        dateUploaded:json["date_uploaded"] !=null ?null: DateTime.parse(json["date_uploaded"]),
+        laboratorySampleDatetime:json["laboratory_sample_datetime"]==""?null:DateTime.parse(json["laboratory_sample_datetime"]),
+        laboratoryTestDatetime:json["laboratory_test_datetime"]==""?null:DateTime.parse(json["laboratory_test_datetime"]), 
+            
+        dateUploaded:json["date_uploaded"]==""?null: DateTime.parse(json["date_uploaded"])
       );
 
   Map<String, dynamic> toJson() => {
@@ -88,8 +87,8 @@ class CertificateCheckResult {
         "laboratory_name": laboratoryName,
         "result_comment": resultComment,
         "laboratory_sample_datetime":
-            laboratorySampleDatetime?.toIso8601String(),
-        "laboratory_test_datetime": laboratoryTestDatetime?.toIso8601String(),
-        "date_uploaded": dateUploaded?.toIso8601String(),
+            laboratorySampleDatetime,
+        "laboratory_test_datetime": laboratoryTestDatetime,
+        "date_uploaded": dateUploaded
       };
 }
